@@ -53,7 +53,7 @@
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = UITextAlignmentCenter;
-        _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
+        _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
         
         self.tint = FPPopoverDefaultTint;
         
@@ -269,7 +269,6 @@
             colors[3] = colors[7] = 1.0;
         }        
     }
-    
     else if(self.tint == FPPopoverGreenTint)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
@@ -283,6 +282,21 @@
         {
             colors[0] = 0.45; colors[1] = 0.82; colors[2] = 0.27;
             colors[4] = 0.18; colors[5] = 0.30;  colors[6] = 0.03;
+            colors[3] = colors[7] = 1.0;
+        }        
+    }
+    else if(self.tint == FPPopoverWhiteTint)
+    {
+        if(_arrowDirection == FPPopoverArrowDirectionUp)
+        {
+            colors[0] = colors[1] = colors[2] = 0.99;
+            colors[4] = colors[5] = colors[6] = 0.99;
+            colors[3] = colors[7] = 1.0;
+        }
+        else
+        {
+            colors[0] = colors[1] = colors[2] = 0.99;
+            colors[4] = colors[5] = colors[6] = 0.99;
             colors[3] = colors[7] = 1.0;
         }        
     }
@@ -350,6 +364,10 @@
     {
         CGContextSetRGBFillColor(ctx, 0.18, 0.30, 0.03, 1.0);        
     }
+    else if(self.tint == FPPopoverWhiteTint)
+    {
+        CGContextSetRGBFillColor(ctx, 0.99, 0.99, 0.99, 1.0);        
+    }
 
     
     CGContextFillRect(ctx, CGRectMake(0, end.y, self.bounds.size.width, self.bounds.size.height-end.y));
@@ -377,11 +395,25 @@
     //3D border of the content view
     CGRect cvRect = _contentView.frame;
     //firstLine
-    CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
+    if(self.tint == FPPopoverWhiteTint)
+    {
+        CGContextSetRGBStrokeColor(ctx, 0.90, 0.90, 0.90, 1.0);
+    }
+    else 
+    {
+        CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
+    }
     CGContextStrokeRect(ctx, cvRect);
     //secondLine
     cvRect.origin.x -= 1; cvRect.origin.y -= 1; cvRect.size.height += 2; cvRect.size.width += 2;
-    CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
+    if(self.tint == FPPopoverWhiteTint)
+    {
+        CGContextSetRGBStrokeColor(ctx, 0.88, 0.88, 0.88, 1.0);
+    }
+    else 
+    {
+        CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
+    }
     CGContextStrokeRect(ctx, cvRect);
     
     
@@ -444,5 +476,19 @@
 {
     [super setBounds:bounds];
     [self setupViews];
+}
+
+- (void)setTint:(FPPopoverTint)tint
+{
+    _tint = tint;
+    if(self.tint == FPPopoverWhiteTint)
+    {
+        _titleLabel.textColor = [UIColor darkGrayColor];
+    }
+    else
+    {
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    
 }
 @end
