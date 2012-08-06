@@ -66,7 +66,6 @@
     [_viewController release];
     [_contentView release];
     [_window release];
-    [_parentView release];
     self.delegate = nil;
     [super dealloc];
 }
@@ -165,32 +164,30 @@
 
 -(CGFloat)parentWidth
 {
-    return _parentView.bounds.size.width;
-    return UIDeviceOrientationIsPortrait(_deviceOrientation) ? _parentView.frame.size.width : _parentView.frame.size.height;
+    return _window.bounds.size.width;
+    //return UIDeviceOrientationIsPortrait(_deviceOrientation) ? _parentView.frame.size.width : _parentView.frame.size.height;
 }
 -(CGFloat)parentHeight
 {
-    return _parentView.bounds.size.height;
-    return UIDeviceOrientationIsPortrait(_deviceOrientation) ? _parentView.frame.size.height : _parentView.frame.size.width;
+    return _window.bounds.size.height;
+    //return UIDeviceOrientationIsPortrait(_deviceOrientation) ? _parentView.frame.size.height : _parentView.frame.size.width;
 }
 
 -(void)presentPopoverFromPoint:(CGPoint)fromPoint
 {
     self.origin = fromPoint;
-    _contentView.relativeOrigin = [_parentView convertPoint:fromPoint toView:_contentView];
+    _contentView.relativeOrigin = [_window convertPoint:fromPoint toView:_contentView];
 
     [self.view removeFromSuperview];
     NSArray *windows = [UIApplication sharedApplication].windows;
     if(windows.count > 0)
     {
-        [_window release]; [_parentView release]; _parentView=nil;
+        [_window release];
         _window = [[windows objectAtIndex:0] retain];
         //keep the first subview
         if(_window.subviews.count > 0)
         {
-            [_parentView release]; 
-            _parentView = [[_window.subviews objectAtIndex:0] retain];
-            [_parentView addSubview:self.view];
+            [_window addSubview:self.view];
         }
         
    }
@@ -252,7 +249,6 @@
         [self.delegate popoverControllerDidDismissPopover:self];
     }
     [_window release]; _window=nil;
-    [_parentView release]; _parentView=nil;
 }
 
 -(void)dismissPopoverAnimated:(BOOL)animated
@@ -522,7 +518,7 @@
     _contentView.frame = r;
 
     self.origin = CGPointMake(p.x + v.frame.size.width/2.0, p.y + v.frame.size.height/2.0);
-    _contentView.relativeOrigin = [_parentView convertPoint:self.origin toView:_contentView];
+    _contentView.relativeOrigin = [_window convertPoint:self.origin toView:_contentView];
 
     return r;
 }
