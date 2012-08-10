@@ -62,12 +62,7 @@
 -(void)dealloc
 {
     [self removeObservers];
-    [_touchView release];
-    [_viewController release];
-    [_contentView release];
-    [_window release];
     self.delegate = nil;
-    [super dealloc];
 }
 
 
@@ -93,7 +88,7 @@
         _contentView = [[FPPopoverView alloc] initWithFrame:CGRectMake(0, 0, 
                                               self.contentSize.width, self.contentSize.height)];
         
-        _viewController = [viewController retain];
+        _viewController = viewController;
         
         [_touchView addSubview:_contentView];
         
@@ -182,8 +177,7 @@
     NSArray *windows = [UIApplication sharedApplication].windows;
     if(windows.count > 0)
     {
-        [_window release];
-        _window = [[windows objectAtIndex:0] retain];
+        _window = [windows objectAtIndex:0];
         //keep the first subview
         if(_window.subviews.count > 0)
         {
@@ -237,7 +231,7 @@
 
 -(void)presentPopoverFromView:(UIView*)fromView
 {
-    [_fromView release]; _fromView = [fromView retain];
+     _fromView = fromView;
     [self presentPopoverFromPoint:[self originFromView:_fromView]];
 }
 
@@ -248,7 +242,7 @@
     {
         [self.delegate popoverControllerDidDismissPopover:self];
     }
-    [_window release]; _window=nil;
+     _window=nil;
 }
 
 -(void)dismissPopoverAnimated:(BOOL)animated

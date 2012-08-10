@@ -30,16 +30,16 @@
     UIView *_fromView;
     UIDeviceOrientation _deviceOrientation;
 }
-@property(nonatomic,assign) id<FPPopoverControllerDelegate> delegate;
+@property(nonatomic,weak) id<FPPopoverControllerDelegate> delegate;
 /** @brief FPPopoverArrowDirectionAny, FPPopoverArrowDirectionVertical or FPPopoverArrowDirectionHorizontal for automatic arrow direction.
  **/
-@property(nonatomic,assign) FPPopoverArrowDirection arrowDirection;
+@property(nonatomic) FPPopoverArrowDirection arrowDirection;
 
-@property(nonatomic,assign) CGSize contentSize;
-@property(nonatomic,assign) CGPoint origin;
+@property(nonatomic) CGSize contentSize;
+@property(nonatomic) CGPoint origin;
 
 /** @brief The tint of the popover. **/
-@property(nonatomic,assign) FPPopoverTint tint;
+@property(nonatomic) FPPopoverTint tint;
 
 /** @brief Initialize the popover with the content view controller
  **/

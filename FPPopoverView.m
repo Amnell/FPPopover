@@ -24,13 +24,6 @@
 @synthesize relativeOrigin;
 @synthesize tint = _tint;
 
--(void)dealloc
-{
-    self.title = nil;
-    [_contentView release];
-    [_titleLabel release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -79,8 +72,7 @@
     if(_contentView != contentView)
     {
         [_contentView removeFromSuperview];
-        [_contentView release];
-        _contentView = [contentView retain];
+        _contentView = contentView;
         [self addSubview:_contentView];
     }
     [self setupViews];
