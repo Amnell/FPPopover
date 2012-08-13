@@ -424,9 +424,9 @@
             contentRect.origin = CGPointMake(10, FP_POPOVER_ARROW_HEIGHT + 10);
             contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-30);
         } else {
-            contentRect.origin = CGPointMake(10, 60);
-            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
-            _titleLabel.frame = CGRectMake(10, 30, self.bounds.size.width-20, 20);
+            contentRect.origin = CGPointMake(10, 50);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-60);
+            _titleLabel.frame = CGRectMake(10, 22, self.bounds.size.width-20, 20);
         }
     }
     else if(_arrowDirection == FPPopoverArrowDirectionDown)
@@ -436,7 +436,7 @@
             contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-30);
         } else {
             contentRect.origin = CGPointMake(10, 40);
-            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-60);
             _titleLabel.frame = CGRectMake(10, 10, self.bounds.size.width-20, 20);
         }
     }
@@ -447,7 +447,7 @@
     else if(_arrowDirection == FPPopoverArrowDirectionRight)
     {
         contentRect.origin = CGPointMake(10, 40);        
-        contentRect.size = CGSizeMake(self.bounds.size.width-40, self.bounds.size.height-50);
+        contentRect.size = CGSizeMake(self.bounds.size.width-30, self.bounds.size.height-50);
         _titleLabel.frame = CGRectMake(10, 10, self.bounds.size.width-20, 20);           
     }
 
