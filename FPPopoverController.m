@@ -79,8 +79,10 @@
         _touchView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _touchView.clipsToBounds = NO;
         [self.view addSubview:_touchView];
+        
+        typeof(self) bself = self;
         [_touchView setTouchedOutsideBlock:^{
-            [self dismissPopoverAnimated:YES]; 
+            [bself dismissPopoverAnimated:YES];
         }];
         
         
