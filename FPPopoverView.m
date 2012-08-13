@@ -48,7 +48,7 @@
         _titleLabel.textAlignment = UITextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
         
-        self.tint = FPPopoverDefaultTint;
+        self.tint = FPPopoverTintDefault;
         
         [self addSubview:_titleLabel];
         [self setupViews];
@@ -214,7 +214,7 @@
     // make a gradient
     CGFloat colors[8];
     
-    if(self.tint == FPPopoverBlackTint)
+    if(self.tint == FPPopoverTintBlack)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
         {
@@ -230,7 +230,7 @@
         }        
     }
     
-    else if(self.tint == FPPopoverLightGrayTint)
+    else if(self.tint == FPPopoverTintLightGray)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
         {
@@ -245,7 +245,7 @@
             colors[3] = colors[7] = 1.0;
         }        
     }
-    else if(self.tint == FPPopoverRedTint)
+    else if(self.tint == FPPopoverTintRed)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
         {
@@ -261,7 +261,7 @@
             colors[3] = colors[7] = 1.0;
         }        
     }
-    else if(self.tint == FPPopoverGreenTint)
+    else if(self.tint == FPPopoverTintGreen)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
         {
@@ -277,7 +277,7 @@
             colors[3] = colors[7] = 1.0;
         }        
     }
-    else if(self.tint == FPPopoverWhiteTint)
+    else if(self.tint == FPPopoverTintWhite)
     {
         if(_arrowDirection == FPPopoverArrowDirectionUp)
         {
@@ -340,23 +340,23 @@
     
     CGGradientRelease(gradient);
     //fill the other part of path
-    if(self.tint == FPPopoverBlackTint)
+    if(self.tint == FPPopoverTintBlack)
     {
         CGContextSetRGBFillColor(ctx, 0.1, 0.1, 0.1, 1.0);        
     }
-    else if(self.tint == FPPopoverLightGrayTint)
+    else if(self.tint == FPPopoverTintLightGray)
     {
         CGContextSetRGBFillColor(ctx, 0.3, 0.3, 0.3, 1.0);        
     }
-    else if(self.tint == FPPopoverRedTint)
+    else if(self.tint == FPPopoverTintRed)
     {
         CGContextSetRGBFillColor(ctx, 0.36, 0.0, 0.09, 1.0);        
     }
-    else if(self.tint == FPPopoverGreenTint)
+    else if(self.tint == FPPopoverTintGreen)
     {
         CGContextSetRGBFillColor(ctx, 0.18, 0.30, 0.03, 1.0);        
     }
-    else if(self.tint == FPPopoverWhiteTint)
+    else if(self.tint == FPPopoverTintWhite)
     {
         CGContextSetRGBFillColor(ctx, 0.99, 0.99, 0.99, 1.0);        
     }

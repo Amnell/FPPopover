@@ -31,12 +31,12 @@ typedef enum {
 
 
 typedef enum {
-    FPPopoverBlackTint = 1UL << 0, // default
-    FPPopoverLightGrayTint = 1UL << 1,
-    FPPopoverGreenTint = 1UL << 2,
-    FPPopoverRedTint = 1UL << 3,
-    FPPopoverWhiteTint = 1UL << 4,
-    FPPopoverDefaultTint = FPPopoverBlackTint
+    FPPopoverTintBlack = 1UL << 0, // default
+    FPPopoverTintLightGray = 1UL << 1,
+    FPPopoverTintGreen = 1UL << 2,
+    FPPopoverTintRed = 1UL << 3,
+    FPPopoverTintWhite = 1UL << 4,
+    FPPopoverTintDefault = FPPopoverTintBlack
 } FPPopoverTint;
 
 @interface FPPopoverView : UIView

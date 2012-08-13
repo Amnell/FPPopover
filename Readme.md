@@ -63,12 +63,12 @@ vary according to the what is found to be the optimal size to fit the popover on
 
 ###Customize the tint
 
-* FPPopoverBlackTint  (default)
-* FPPopoverLightGrayTint
-* FPPopoverGreenTint
-* FPPopoverRedTint
+* FPPopoverTintBlack  (default)
+* FPPopoverTintLightGray
+* FPPopoverTintGreen
+* FPPopoverTintRed
 
-        popover.tint = FPPopoverRedTint;
+        popover.tint = FPPopoverTintRed;
     
 Contact us if you need more tints!
 

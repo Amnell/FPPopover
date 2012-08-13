@@ -57,7 +57,7 @@
     FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:controller];
     
     //popover.arrowDirection = FPPopoverArrowDirectionAny;
-    popover.tint = FPPopoverDefaultTint;
+    popover.tint = FPPopoverTintDefault;
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
