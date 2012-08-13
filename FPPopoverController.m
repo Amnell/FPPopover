@@ -33,6 +33,7 @@
 @synthesize origin = _origin;
 @synthesize arrowDirection = _arrowDirection;
 @synthesize tint = _tint;
+@synthesize contentBorder = _contentBorder;
 
 -(void)addObservers
 {
@@ -119,6 +120,17 @@
 -(FPPopoverTint)tint
 {
     return _contentView.tint;
+}
+
+- (void)setContentBorder:(FPPopoverContentBorder)contentBorder
+{
+    _contentView.contentBorder = contentBorder;
+    [_contentView setNeedsDisplay];
+}
+
+- (FPPopoverContentBorder)contentBorder
+{
+    return _contentView.contentBorder;
 }
 
 #pragma mark - View lifecycle

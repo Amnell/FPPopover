@@ -47,6 +47,7 @@
     
     //popover.arrowDirection = FPPopoverArrowDirectionAny;
     popover.tint = FPPopoverTintDefault;
+    popover.contentBorder = FPPopoverContentBorderNone;
     
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {

@@ -41,6 +41,9 @@
 /** @brief The tint of the popover. **/
 @property(nonatomic) FPPopoverTint tint;
 
+/** @brief The border style of the content view in popover. **/
+@property(nonatomic) FPPopoverContentBorder contentBorder;
+
 /** @brief Initialize the popover with the content view controller
  **/
 -(id)initWithViewController:(UIViewController*)viewController;

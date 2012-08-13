@@ -385,30 +385,30 @@
     CGPathRelease(externalBorderPath);
 
     //3D border of the content view
-    CGRect cvRect = _contentView.frame;
-    //firstLine
-    if(self.tint == FPPopoverWhiteTint)
-    {
-        CGContextSetRGBStrokeColor(ctx, 0.90, 0.90, 0.90, 1.0);
+    if (self.contentBorder != FPPopoverContentBorderNone) {
+        CGRect cvRect = _contentView.frame;
+        //firstLine
+        if(self.tint == FPPopoverTintWhite)
+        {
+            CGContextSetRGBStrokeColor(ctx, 0.90, 0.90, 0.90, 1.0);
+        }
+        else
+        {
+            CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
+        }
+        CGContextStrokeRect(ctx, cvRect);
+        //secondLine
+        cvRect.origin.x -= 1; cvRect.origin.y -= 1; cvRect.size.height += 2; cvRect.size.width += 2;
+        if(self.tint == FPPopoverTintWhite)
+        {
+            CGContextSetRGBStrokeColor(ctx, 0.88, 0.88, 0.88, 1.0);
+        }
+        else
+        {
+            CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
+        }
+        CGContextStrokeRect(ctx, cvRect);
     }
-    else 
-    {
-        CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
-    }
-    CGContextStrokeRect(ctx, cvRect);
-    //secondLine
-    cvRect.origin.x -= 1; cvRect.origin.y -= 1; cvRect.size.height += 2; cvRect.size.width += 2;
-    if(self.tint == FPPopoverWhiteTint)
-    {
-        CGContextSetRGBStrokeColor(ctx, 0.88, 0.88, 0.88, 1.0);
-    }
-    else 
-    {
-        CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
-    }
-    CGContextStrokeRect(ctx, cvRect);
-    
-    
     
     CGContextRestoreGState(ctx);
 }
@@ -420,18 +420,30 @@
 
     if(_arrowDirection == FPPopoverArrowDirectionUp)
     {
-        contentRect.origin = CGPointMake(10, 60);  
-        contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
-        _titleLabel.frame = CGRectMake(10, 30, self.bounds.size.width-20, 20);        
+        if ([_titleLabel.text length] == 0) {
+            contentRect.origin = CGPointMake(10, FP_POPOVER_ARROW_HEIGHT + 10);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-30);
+        } else {
+            contentRect.origin = CGPointMake(10, 60);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
+            _titleLabel.frame = CGRectMake(10, 30, self.bounds.size.width-20, 20);
+        }
     }
     else if(_arrowDirection == FPPopoverArrowDirectionDown)
     {
-        contentRect.origin = CGPointMake(10, 40);        
-        contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
-        _titleLabel.frame = CGRectMake(10, 10, self.bounds.size.width-20, 20);           
+        if ([_titleLabel.text length] == 0) {
+            contentRect.origin = CGPointMake(10, 10);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-30);
+        } else {
+            contentRect.origin = CGPointMake(10, 40);
+            contentRect.size = CGSizeMake(self.bounds.size.width-20, self.bounds.size.height-70);
+            _titleLabel.frame = CGRectMake(10, 10, self.bounds.size.width-20, 20);
+        }
     }
     
-    
+    //
+    // TODO: Fix size for left and right when title is empty
+    //
     else if(_arrowDirection == FPPopoverArrowDirectionRight)
     {
         contentRect.origin = CGPointMake(10, 40);        
@@ -473,7 +485,7 @@
 - (void)setTint:(FPPopoverTint)tint
 {
     _tint = tint;
-    if(self.tint == FPPopoverWhiteTint)
+    if(self.tint == FPPopoverTintWhite)
     {
         _titleLabel.textColor = [UIColor darkGrayColor];
     }

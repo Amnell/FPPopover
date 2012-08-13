@@ -39,6 +39,11 @@ typedef enum {
     FPPopoverTintDefault = FPPopoverTintBlack
 } FPPopoverTint;
 
+typedef enum {
+    FPPopoverContentBorderDefault = 1UL << 0, // default
+    FPPopoverContentBorderNone = 1UL << 1
+} FPPopoverContentBorder;
+
 @interface FPPopoverView : UIView
 {
     //default FPPopoverArrowDirectionUp
@@ -49,6 +54,7 @@ typedef enum {
 @property(nonatomic,strong) NSString *title;
 @property(nonatomic) CGPoint relativeOrigin;
 @property(nonatomic) FPPopoverTint tint;
+@property(nonatomic) FPPopoverContentBorder contentBorder;
 
 -(void)setArrowDirection:(FPPopoverArrowDirection)arrowDirection;
 -(FPPopoverArrowDirection)arrowDirection;
