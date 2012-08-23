@@ -112,6 +112,26 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [_viewController viewDidAppear:animated];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_viewController viewWillAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [_viewController viewWillDisappear:animated];
+}
 
 -(void)setTint:(FPPopoverTint)tint
 {
