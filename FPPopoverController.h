@@ -30,7 +30,7 @@
     UIView *_fromView;
     UIDeviceOrientation _deviceOrientation;
 }
-@property(nonatomic,weak) id<FPPopoverControllerDelegate> delegate;
+@property(nonatomic, unsafe_unretained) id<FPPopoverControllerDelegate> delegate;
 /** @brief FPPopoverArrowDirectionAny, FPPopoverArrowDirectionVertical or FPPopoverArrowDirectionHorizontal for automatic arrow direction.
  **/
 @property(nonatomic) FPPopoverArrowDirection arrowDirection;
